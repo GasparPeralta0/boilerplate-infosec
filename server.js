@@ -8,11 +8,12 @@ var app = express();
 app.disable("x-powered-by");
 var fs = require("fs");
 var path = require("path");
-const bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 
-bcrypt.hash('password', 12, function(err, hash) {
+bcrypt.hash('test', 12, function(err, hash) {
   console.log(hash);
 });
+;
 
 app.use(function (req, res, next) {
   res.set({
