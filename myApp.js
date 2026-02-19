@@ -50,7 +50,7 @@ app.use(
 
 
 
-const api = require('./api.js');
+const api = require('./server.js');
 
 app.use(express.static('public'));
 app.disable('strict-transport-security');
