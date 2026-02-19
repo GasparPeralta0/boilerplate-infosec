@@ -10,7 +10,7 @@ var fs = require("fs");
 var path = require("path");
 var bcrypt = require('bcrypt');
 
-var hash = bcrypt.hashSync("password", 12);
+var hash = bcrypt.hashSync('password', 12);
 console.log(hash);
 
 app.use(function (req, res, next) {
