@@ -50,13 +50,11 @@ app.use(
 
 
 
-
-
 module.exports = app;
-const api = require('./server.js');
+const api = require('./api.js');
 app.use(express.static('public'));
 app.disable('strict-transport-security');
-app.use('/', api);
+app.use('/_api', api);
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
