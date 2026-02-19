@@ -11,9 +11,9 @@ var path = require("path");
 
 var bcrypt = require("bcrypt");
 
-bcrypt.hash("password", 12, function (err, hash) {
-  console.log(hash);
-});
+var hash = bcrypt.hashSync("password", 12);
+console.log(hash);
+;
 
 
 app.use(function (req, res, next) {
@@ -37,6 +37,14 @@ app.get("/file/*?", function (req, res, next) {
     res.type("txt").send(data.toString());
   });
 });
+
+app.get("/server.js", function (req, res, next) {
+  fs.readFile(path.join(__dirname, "server.js"), function (err, data) {
+    if (err) return next(err);
+    res.type("txt").send(data.toString());
+  });
+});
+
 
 var main = require("./myApp.js");
 app.get("/app-info", function (req, res) {
