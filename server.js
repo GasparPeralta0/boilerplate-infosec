@@ -13,7 +13,6 @@ var bcrypt = require('bcrypt');
 bcrypt.hash('test', 12, function(err, hash) {
   console.log(hash);
 });
-;
 
 app.use(function (req, res, next) {
   res.set({
