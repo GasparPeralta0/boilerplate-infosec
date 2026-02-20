@@ -11,7 +11,7 @@ var path = require("path");
 var bcrypt = require('bcrypt');
 
 var myPlaintextPassword = 'password';
-var saltRounds = 12;
+var saltRounds = 13;
 
 bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
   console.log(hash);
