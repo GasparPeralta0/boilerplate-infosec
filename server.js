@@ -31,10 +31,11 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/server.js", function (req, res, next) {
-  fs.readFile(path.join(__dirname, "server.js"), function (err, data) {
+
+app.get('/server.js', function (req, res, next) {
+  fs.readFile(__dirname + '/server.js', function (err, data) {
     if (err) return next(err);
-    res.type("txt").send(data.toString());
+    res.type('txt').send(data.toString());
   });
 });
 
