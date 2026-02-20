@@ -10,17 +10,15 @@ var path = require("path");
 
 var bcrypt = require('bcrypt');
 
-var myPlaintextPassword = 'password';
+var myPlaintextPassword = "password";
 var saltRounds = 13;
 
-bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
   console.log(hash);
-
-  bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
     console.log(res);
   });
 });
-
 
 
 app.use(function (req, res, next) {
@@ -31,6 +29,13 @@ app.use(function (req, res, next) {
   });
   app.disable("x-powered-by");
   next();
+});
+
+app.get("/server.js", function (req, res, next) {
+  fs.readFile(path.join(__dirname, "server.js"), function (err, data) {
+    if (err) return next(err);
+    res.type("txt").send(data.toString());
+  });
 });
 
 app.get("/file/*?", function (req, res, next) {
