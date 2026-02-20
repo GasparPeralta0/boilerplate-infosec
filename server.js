@@ -15,6 +15,7 @@ var saltRounds = 13;
 
 bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
   console.log(hash);
+
   bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
     console.log(res);
   });
