@@ -8,14 +8,18 @@ app.disable("x-powered-by");
 var fs = require("fs");
 var path = require("path");
 
-var bcrypt = require('bcrypt'); 
-var pswd = 'password';
+var bcrypt = require('bcrypt');
 
-var hash = bcrypt.hashSync(pswd, 13);
-console.log(hash);
+var myPlaintextPassword = 'password';
+var saltRounds = 12;
 
-var res = bcrypt.compareSync(pswd, hash);
-console.log(res);
+bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+  console.log(hash);
+
+  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+    console.log(res);
+  });
+});
 
 
 
