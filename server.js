@@ -31,6 +31,14 @@ app.use(function (req, res, next) {
   next();
 });
 
+// START_SYNC
+var hash = bcrypt.hashSync(myPlaintextPassword, saltRounds);
+console.log(hash);
+
+var result = bcrypt.compareSync(myPlaintextPassword, hash);
+console.log(result);
+// END_SYNC
+
 
 app.get('/server.js', function (req, res, next) {
   fs.readFile(__dirname + '/server.js', function (err, data) {
