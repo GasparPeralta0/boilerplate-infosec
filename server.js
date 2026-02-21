@@ -12,13 +12,14 @@ var bcrypt = require('bcrypt');
 var myPlaintextPassword = 'password';
 var saltRounds = 13;
 
-bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+// START_ASYNC
+bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
   console.log(hash);
-  
-  bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
     console.log(res);
   });
 });
+// END_ASYNC
 
 app.use(function (req, res, next) {
   res.set({
